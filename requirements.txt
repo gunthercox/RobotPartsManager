@@ -1,2 +1,5 @@
 django==1.9
+django-cors-headers
+django-oauth-toolkit
+djangorestframework
 python-social-auth==0.2.14
