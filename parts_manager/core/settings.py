@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
 
     'parts_manager.core',
+    'parts_manager.parts',
     'parts_manager.robots',
 ]
 
