@@ -1,0 +1,11 @@
+from rest_framework import viewsets
+from parts_manager.parts.models import Part
+from parts_manager.parts.serializers import PartSerializer
+
+
+class PartViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows parts to be viewed or edited.
+    """
+    queryset = Part.objects.all()
+    serializer_class = PartSerializer
