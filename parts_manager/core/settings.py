@@ -39,11 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'social.apps.django_app.default',
-
     'parts_manager.core',
     'parts_manager.parts',
     'parts_manager.robots',
+
+    'corsheaders',
+    'oauth2_provider',
+    'rest_framework',
+    'social.apps.django_app.default',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -64,6 +67,7 @@ AUTHENTICATION_BACKENDS = (
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -71,6 +75,13 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser',
+    ),
+    'PAGE_SIZE': 10
+}
 
 ROOT_URLCONF = 'parts_manager.core.urls'
 
