@@ -1,7 +1,15 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
-#from rest_framework import routers
+from rest_framework import routers
+from parts_manager.robots.api import RobotViewSet
+from parts_manager.parts.api import PartViewSet
+
+
+router = routers.DefaultRouter()
+
+router.register('robots', RobotViewSet)
+router.register('parts', PartViewSet)
 
 
 urlpatterns = [
@@ -15,14 +23,20 @@ urlpatterns = [
         {'template_name': 'login.html'}
     ),
     url(r'^logout/$', auth_views.logout),
-    url(r'^api-auth/',
-        include('rest_framework.urls',
-        namespace='rest_framework')
-    ),
 
     url(r'',
         include('social.apps.django_app.urls',
         namespace='social')
+    ),
+
+    url(r'^api/',
+        include(router.urls,
+        namespace='api'),
+        name='api_root',
+    ),
+    url(r'^api-auth/',
+        include('rest_framework.urls',
+        namespace='rest_framework')
     ),
 
     url(r'^api/oauth/',
@@ -30,13 +44,5 @@ urlpatterns = [
             'oauth2_provider.urls',
             namespace='oauth2_provider'
         ),
-    ),
-
-    url(r'^api/',
-        include(
-            'parts_manager.core.api.urls',
-            namespace='api'
-        ),
-        name='api_root',
     ),
 ]
