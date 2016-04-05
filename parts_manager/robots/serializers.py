@@ -6,6 +6,8 @@ from parts_manager.parts.serializers import PartSerializer
 
 class RobotSerializer(serializers.ModelSerializer):
 
+    url = serializers.HyperlinkedIdentityField(view_name='api:robot-detail')
+
     parts = serializers.HyperlinkedRelatedField(
         many=True,
         view_name='api:part-detail',
@@ -15,4 +17,4 @@ class RobotSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Robot
-        fields = ('id', 'name', 'parts')
+        fields = ('id', 'url', 'name', 'parts')
