@@ -11,7 +11,7 @@ class Robot(models.Model):
     )
 
     parts = models.ManyToManyField(
-        'parts.Part',
+        'products.Product',
         blank=True,
         help_text='The parts used by this robot.'
     )

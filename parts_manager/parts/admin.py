@@ -1,5 +1,5 @@
 from django.contrib import admin
-from parts_manager.parts.models import Part, Retailer
+from parts_manager.parts.models import Part
 
 
 class PartAdmin(admin.ModelAdmin):
@@ -7,10 +7,4 @@ class PartAdmin(admin.ModelAdmin):
     search_fields = ('name', )
 
 
-class RetailerAdmin(admin.ModelAdmin):
-    list_display = ('name', )
-    search_fields = ('name', )
-
-
 admin.site.register(Part, PartAdmin)
-admin.site.register(Retailer, RetailerAdmin)
