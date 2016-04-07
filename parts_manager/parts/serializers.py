@@ -7,4 +7,4 @@ class PartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Part
-        fields = ('id', 'url', 'name')
+        fields = ('id', 'url', 'name', )

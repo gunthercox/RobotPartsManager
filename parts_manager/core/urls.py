@@ -4,12 +4,15 @@ from django.contrib import admin
 from rest_framework import routers
 from parts_manager.robots.api import RobotViewSet
 from parts_manager.parts.api import PartViewSet
+from parts_manager.products.api import ProductViewSet, RetailerViewSet
 
 
 router = routers.DefaultRouter()
 
-router.register('robots', RobotViewSet)
 router.register('parts', PartViewSet)
+router.register('products', ProductViewSet)
+router.register('retailers', RetailerViewSet)
+router.register('robots', RobotViewSet)
 
 
 urlpatterns = [
