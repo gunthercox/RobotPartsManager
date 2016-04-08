@@ -5,12 +5,14 @@ from rest_framework import routers
 from parts_manager.robots.api import RobotViewSet
 from parts_manager.parts.api import PartViewSet
 from parts_manager.products.api import ProductViewSet, RetailerViewSet
+from parts_manager.purchases.api import PurchaseViewSet
 
 
 router = routers.DefaultRouter()
 
 router.register('parts', PartViewSet)
 router.register('products', ProductViewSet)
+router.register('purchases', PurchaseViewSet)
 router.register('retailers', RetailerViewSet)
 router.register('robots', RobotViewSet)
 
