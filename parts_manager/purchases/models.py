@@ -31,14 +31,3 @@ class Purchase(models.Model):
 
     def get_total_price(self):
         return self.get_price() + self.shipping - self.discounts
-
-    def clean(self):
-        super(Purchase, self).clean()
-
-        # Check to make sure each product has the same retailer
-        '''
-        retailer = self.products.first().retailer
-        for product in self.products:
-            if product.retailer != retailer:
-                raise ValidationError(_('All parts must be purchased from the same retailer.'))
-        '''

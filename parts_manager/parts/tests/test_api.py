@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from parts_manager.parts.factories import PartFactory
 
 
 class PartsApiTests(APITestCase):
@@ -26,7 +27,9 @@ class PartsApiTests(APITestCase):
     def test_get_parts_detail(self):
         self.client.login(username=self.user.username, password='test')
 
-        url = reverse('api:part-detail')
+        part = PartFactory()
+
+        url = reverse('api:part-detail', args=[part.id])
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
