@@ -25,7 +25,7 @@ class RobotViewSet(viewsets.ModelViewSet):
         Return a list of all parts currently used by this robot.
         """
         robot = self.get_object()
-        parts = robot.robot_parts.all()
+        parts = robot.robot_parts.all().order_by('product__item__name')
 
         serializer = RobotPartSerializer(
             parts,
@@ -43,21 +43,17 @@ class RobotViewSet(viewsets.ModelViewSet):
         """
         robot = self.get_object()
         robot_parts = robot.robot_parts.all()
-        part_ids = robot_parts.values_list('product', flat=True)
-
-        print part_ids
-
-        parts = Part.objects.filter(id__in=part_ids)
-
-        # Get all products for parts that this robot uses
-        products = Product.objects.filter(item__in=parts)
+        part_ids = robot_parts.values_list('product__id', flat=True)
 
         product_results = []
 
         # For each part, get the product with the lowest price
-        for part in parts:
+        for part_id in part_ids:
+            part = Part.objects.get(id=part_id)
+
             # TODO: Account for shipping
-            product = products.filter(item=part).order_by('price')
+            product = Product.objects.filter(item=part).order_by('price')
+
             product_results.append(product.first())
 
         serializer = ProductSerializer(
