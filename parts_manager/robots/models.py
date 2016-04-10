@@ -10,11 +10,38 @@ class Robot(models.Model):
         help_text='The robot\'s name.'
     )
 
-    parts = models.ManyToManyField(
-        'products.Product',
-        blank=True,
-        help_text='The parts used by this robot.'
-    )
-
     def __str__(self):
         return self.name
+
+
+class RobotPart(models.Model):
+    """
+    An entity that represents a part that a robot is using.
+    """
+
+    FUNCTIONAL = 'F'
+    DAMAGED = 'D'
+    NONFUNCTIONAL = 'N'
+
+    PART_CONDITION_CHOICES = (
+        (FUNCTIONAL, 'Functional'),
+        (DAMAGED, 'Damaged'),
+        (NONFUNCTIONAL, 'Nonfunctional'),
+    )
+
+    condition = models.CharField(
+        max_length=1,
+        choices=PART_CONDITION_CHOICES,
+        default=FUNCTIONAL
+    )
+
+    robot = models.ForeignKey(
+        'robots.Robot',
+        related_name='robot_parts',
+        help_text='The robot this part belongs to.'
+    )
+
+    product = models.ForeignKey(
+        'products.Product',
+        help_text='The product for this robot part.'
+    )

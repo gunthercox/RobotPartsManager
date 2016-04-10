@@ -21,6 +21,8 @@ class Purchase(models.Model):
         help_text='The total sum of any discounts applied to this purchase.'
     )
 
+    date = models.DateField()
+
     def get_price(self):
         """
         Return the sum of the prices of each product in the order.

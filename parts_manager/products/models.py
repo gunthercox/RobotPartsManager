@@ -17,6 +17,9 @@ class Product(models.Model):
         help_text='The retailer that sells this product.'
     )
 
+    def __str__(self):
+        return self.item.name
+
 
 class Retailer(models.Model):
     """
