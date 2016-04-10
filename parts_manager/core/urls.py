@@ -2,10 +2,10 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from rest_framework import routers
-from parts_manager.robots.api import RobotViewSet
-from parts_manager.parts.api import PartViewSet
-from parts_manager.products.api import ProductViewSet, RetailerViewSet
-from parts_manager.purchases.api import PurchaseViewSet
+from parts_manager.parts.viewsets import PartViewSet
+from parts_manager.products.viewsets import ProductViewSet, RetailerViewSet
+from parts_manager.purchases.viewsets import PurchaseViewSet
+from parts_manager.robots.viewsets import RobotViewSet, RobotPartViewSet
 
 
 router = routers.DefaultRouter()
@@ -15,6 +15,7 @@ router.register('products', ProductViewSet)
 router.register('purchases', PurchaseViewSet)
 router.register('retailers', RetailerViewSet)
 router.register('robots', RobotViewSet)
+router.register('robotparts', RobotPartViewSet)
 
 
 urlpatterns = [

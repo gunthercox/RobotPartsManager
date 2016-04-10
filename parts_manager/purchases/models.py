@@ -21,7 +21,7 @@ class Purchase(models.Model):
         help_text='The total sum of any discounts applied to this purchase.'
     )
 
-    date = models.DateField()
+    date = models.DateTimeField()
 
     def get_price(self):
         """
