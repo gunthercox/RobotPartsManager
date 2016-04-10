@@ -1,5 +1,17 @@
 # Robot Parts Manager
 
+[![Build Status](https://travis-ci.org/gunthercox/RobotPartsManager.svg?branch=master)](https://travis-ci.org/gunthercox/RobotPartsManager)
+
+This is a parts inventory management application
+designed to hold information about parts held in
+inventory, the availability of the same part from
+different retailers, and which parts each robot is using.
+
+In addition, this application provides API endpoints
+through which each robot can authenticate and update
+the condition of a given part in the case that it is
+damaged and a new one needs to be ordered.
+
 ## Setup
 
 1. Clone this repository `https://github.com/gunthercox/RobotPartsManager.git`
