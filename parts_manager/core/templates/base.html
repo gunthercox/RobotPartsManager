@@ -22,7 +22,11 @@
         </div>
         {% endblock %}
 
-        {% block footer %}{% endblock %}
+        {% block footer %}
+        <footer>
+            {% include 'footer.html' %}
+        </footer>
+        {% endblock %}
 
         {% block foot %}
             {% block foot-extra %}{% endblock %}
