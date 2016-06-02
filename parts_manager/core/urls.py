@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from rest_framework import routers
+from parts_manager.app import views as app_views
 from parts_manager.parts.viewsets import PartViewSet
 from parts_manager.products.viewsets import ProductViewSet, RetailerViewSet
 from parts_manager.purchases.viewsets import PurchaseViewSet
@@ -24,9 +25,15 @@ urlpatterns = [
         include('django.contrib.admindocs.urls')
     ),
 
+    url(r'^$',
+        app_views.MainView.as_view(),
+        name='main'
+    ),
+
     url(r'^login/$',
         auth_views.login,
-        {'template_name': 'login.html'}
+        {'template_name': 'login.html'},
+        name='login'
     ),
     url(r'^logout/$', auth_views.logout),
 
@@ -36,19 +43,14 @@ urlpatterns = [
     ),
 
     url(r'^api/',
-        include(router.urls,
-        namespace='api'),
+        include(router.urls, namespace='api'),
         name='api_root',
     ),
     url(r'^api-auth/',
-        include('rest_framework.urls',
-        namespace='rest_framework')
+        include('rest_framework.urls', namespace='rest_framework')
     ),
 
     url(r'^api/oauth/',
-        include(
-            'oauth2_provider.urls',
-            namespace='oauth2_provider'
-        ),
+        include('oauth2_provider.urls', namespace='oauth2_provider')
     ),
 ]

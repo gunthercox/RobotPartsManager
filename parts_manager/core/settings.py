@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'parts_manager.app',
     'parts_manager.core',
     'parts_manager.parts',
     'parts_manager.products',
