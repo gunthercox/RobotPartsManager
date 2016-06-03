@@ -53,4 +53,13 @@ urlpatterns = [
     url(r'^api/oauth/',
         include('oauth2_provider.urls', namespace='oauth2_provider')
     ),
+
+    url(r'^parts/',
+        include(
+            'parts_manager.parts.urls',
+            namespace='part'
+        ),
+        name='part_root',
+    ),
+
 ]

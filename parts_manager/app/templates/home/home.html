@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 
+{% block head-extra %}
+    <link rel="stylesheet" href="/static/css/home.css">
+{% endblock %}
+
+{% block header %}
+    <div class="masthead">
+        <div class="container">
+            <h1>{{ site.title }}</h1>
+            <p class="lead">
+                Parts list website that can generate a list of parts for a project for the lowest cost.
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-    Welcome!
+
 {% endblock %}

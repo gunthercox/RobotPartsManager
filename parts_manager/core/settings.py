@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'parts_manager.robots',
 
     'corsheaders',
+    'debug_toolbar',
     'oauth2_provider',
     'rest_framework',
     'social.apps.django_app.default',
