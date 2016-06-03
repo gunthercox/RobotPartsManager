@@ -62,4 +62,12 @@ urlpatterns = [
         name='part_root',
     ),
 
+    url(r'^projects/',
+        include(
+            'parts_manager.projects.urls',
+            namespace='project'
+        ),
+        name='project_root',
+    ),
+
 ]
