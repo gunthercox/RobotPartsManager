@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'parts_manager.core',
     'parts_manager.parts',
     'parts_manager.products',
+    'parts_manager.projects',
     'parts_manager.purchases',
     'parts_manager.robots',
 
