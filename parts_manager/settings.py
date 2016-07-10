@@ -119,7 +119,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'parts_manager.core.wsgi.application'
+WSGI_APPLICATION = 'parts_manager.wsgi.application'
 
 
 # Database
