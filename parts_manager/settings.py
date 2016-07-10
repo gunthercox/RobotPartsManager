@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'parts_manager.app',
-    'parts_manager.core',
     'parts_manager.parts',
     'parts_manager.products',
     'parts_manager.projects',
     'parts_manager.purchases',
     'parts_manager.robots',
+    'parts_manager.website',
 
     'corsheaders',
     'debug_toolbar',
@@ -98,7 +98,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-ROOT_URLCONF = 'parts_manager.core.urls'
+ROOT_URLCONF = 'parts_manager.website.urls'
 
 TEMPLATES = [
     {
@@ -113,7 +113,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
-                'parts_manager.core.context_processors.site_data',
+                'parts_manager.website.context_processors.site_data',
             ],
         },
     },
