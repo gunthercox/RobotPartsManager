@@ -13,7 +13,7 @@ class PartsApiTests(APITestCase):
         self.user = UserFactory()
 
     def test_get_parts_list(self):
-        self.client.login(username=self.user.email, password='test')
+        self.client.login(username=self.user.username, password='test')
 
         url = reverse('api:part-list')
         response = self.client.get(url)
