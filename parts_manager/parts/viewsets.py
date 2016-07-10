@@ -13,10 +13,6 @@ class PartViewSet(viewsets.ModelViewSet):
     """
     queryset = Part.objects.all()
     serializer_class = PartSerializer
-    permission_classes = [
-        permissions.IsAuthenticated,
-        TokenHasScope
-    ]
 
     filter_backends = (
         filters.SearchFilter,
