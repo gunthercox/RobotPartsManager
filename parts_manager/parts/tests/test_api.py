@@ -1,7 +1,7 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
+from parts_manager.website.factories import UserFactory
 from parts_manager.parts.factories import PartFactory
 
 
@@ -10,11 +10,7 @@ class PartsApiTests(APITestCase):
     def setUp(self):
         super(PartsApiTests, self).setUp()
 
-        self.user = User.objects.create_superuser(
-            'testuser',
-            'test@example.com',
-            'test'
-        )
+        self.user = UserFactory()
 
     def test_get_parts_list(self):
         self.client.login(username=self.user.username, password='test')
