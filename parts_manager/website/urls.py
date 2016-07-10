@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from rest_framework import routers
-from parts_manager.app import views as app_views
+from parts_manager.website import views as app_views
 from parts_manager.parts.viewsets import PartViewSet
 from parts_manager.products.viewsets import ProductViewSet, RetailerViewSet
 from parts_manager.purchases.viewsets import PurchaseViewSet
