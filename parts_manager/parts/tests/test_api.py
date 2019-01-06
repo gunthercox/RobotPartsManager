@@ -1,6 +1,6 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from parts_manager.website.factories import UserFactory
 from parts_manager.parts.factories import PartFactory
 

@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from parts_manager.robots.models import Robot, RobotPart
-from parts_manager.parts.models import Part
 from parts_manager.products.serializers import ProductSerializer
 
 
