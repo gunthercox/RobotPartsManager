@@ -1,4 +1,4 @@
-from rest_framework import viewsets, filters
+from rest_framework import viewsets
 from parts_manager.purchases.models import Purchase
 from parts_manager.purchases.serializers import PurchaseSerializer
 

@@ -46,57 +46,37 @@ INSTALLED_APPS = [
 
     'corsheaders',
     'debug_toolbar',
-    'oauth2_provider',
     'rest_framework',
-    'social.apps.django_app.default',
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.disqus.DisqusOAuth2',
-    'social.backends.google.GoogleOAuth2',
-    'social.backends.github.GithubOAuth2',
-    'social.backends.openstreetmap.OpenStreetMapOAuth',
-    'social.backends.stackoverflow.StackoverflowOAuth2',
-    'social.backends.stripe.StripeOAuth2',
-    'social.backends.trello.TrelloOAuth',
-    'social.backends.twilio.TwilioAuth',
-    'social.backends.twitter.TwitterOAuth',
-    'social.backends.email.EmailAuth',
-    'social.backends.username.UsernameAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-# This is the list of available scopes
-OAUTH2_PROVIDER = {
-    'SCOPES': {
-        'read': 'Read scope',
-        'write': 'Write scope',
-        'groups': 'Access to your groups'
-    }
-}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
-    'PAGE_SIZE': 10
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
 ROOT_URLCONF = 'parts_manager.website.urls'
@@ -112,8 +92,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social.apps.django_app.context_processors.backends',
-                'social.apps.django_app.context_processors.login_redirect',
                 'parts_manager.website.context_processors.site_data',
             ],
         },

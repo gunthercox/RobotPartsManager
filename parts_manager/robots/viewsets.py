@@ -1,6 +1,5 @@
 from rest_framework import viewsets
 from rest_framework.decorators import detail_route
-from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from parts_manager.robots.models import Robot, RobotPart
 from parts_manager.parts.models import Part

@@ -9,11 +9,13 @@ class Product(models.Model):
 
     item = models.ForeignKey(
         'parts.Part',
+        on_delete=models.CASCADE,
         help_text='The part that this product is for.'
     )
 
     retailer = models.ForeignKey(
         'products.Retailer',
+        on_delete=models.CASCADE,
         help_text='The retailer that sells this product.'
     )
 

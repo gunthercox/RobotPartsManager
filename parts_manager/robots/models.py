@@ -38,10 +38,12 @@ class RobotPart(models.Model):
     robot = models.ForeignKey(
         'robots.Robot',
         related_name='robot_parts',
+        on_delete=models.CASCADE,
         help_text='The robot this part belongs to.'
     )
 
     product = models.ForeignKey(
         'products.Product',
+        on_delete=models.CASCADE,
         help_text='The product for this robot part.'
     )
